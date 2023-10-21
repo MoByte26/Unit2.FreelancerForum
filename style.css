@@ -1,29 +1,31 @@
-
-.squareDisplay {
+/* .catchAll { */
+    .squareDisplay {
     width: 1000px;
     height: 900px;
     border: 10px;
     border-style: solid; color: black;
     text-align: center;
-}
-
-
-h1 { 
+    
+    }
+/* ********************************************************* */
+    h1 { 
    font-size: 3em;
    font-style: italic;
-}
-
-h2 {
+    }
+/* ********************************************************* */
+    h2 {
     font-size: 2em;
-}
+    }
+/* ********************************************************* */
 
-h3 {
+    h3 {
    font-size: 3em;
-}
+    }
+/* ********************************************************* */
 
-#NOS {
+    div {
     display: flex; 
-    justify-content: center; 
     word-spacing: 130px;
-    font-size: 2.5em;
-}  
+    font-size: 2em;
+    }  
+/* } */

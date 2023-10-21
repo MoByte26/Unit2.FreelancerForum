@@ -1,22 +1,3 @@
-function addArray() {
-  const string1 = { name: "Alice", price: 30, occupation: "writer" }
-  body.appendChild(string1);
-}
-
-
-setInterval(() => {
-  console.log('Tick')
-}, 1000)
-
-
-const squareDisplay = document.createElement('div');
-squareDisplay.classList.add('squareDisplay');
-
-const body = document.querySelector('body');
-body.appendChild(squareDisplay);
-
-
-
 // to do:
 // message displays CURRENT avg starting price
 // new freelancer pops up every few seconds
@@ -24,8 +5,15 @@ body.appendChild(squareDisplay);
 
 // *******************************************************************************
 
-// array of freelancers
-const freelancers = [
+// ***************JS SQUARE********************
+
+  const squareDisplay = document.createElement('div');
+  squareDisplay.classList.add('squareDisplay');
+  const body = document.querySelector('body');
+  body.appendChild(squareDisplay);
+
+    // array of freelancers
+  const freelancers = [
     { name: "Alice", price: 30, occupation: "writer" },
     { name: "Bob", price: 50, occupation: "teacher" },
     { name: "Carol", price: 70, occupation: "programmer" },
@@ -35,6 +23,27 @@ const freelancers = [
     { name: "Lily", price: 140, occupation: "software dev" },
     { name: "Anya", price: 150, occupation: "grad professor" },
   ];
+
+  const title = document.createElement("h1");
+    title.textContent = "Freelancer Forum";
+      body.append(title);
+
+  const titleTwo = document.createElement("h2");
+    titleTwo.textContent = "The average starting price is $30";
+      body.append(titleTwo);
+
+  const aF = document.createElement("h3");
+    aF.textContent = "Available Freelancers"
+      body.append(aF);
+
+  const mainText = document.createElement("div")
+    mainText.textContent = "Name Occupation Starting-Price"
+      body.append(mainText);
+
+  setInterval(() => {
+      console.log('Tick')
+      }, 1000)
+    
 
 
   // initial array of freelancers
