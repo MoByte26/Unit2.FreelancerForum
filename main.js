@@ -3,65 +3,91 @@
 // new freelancer pops up every few seconds
 // avg starting price updated accordingly
 
-// *******************************************************************************
+const names = ["Alice", "Bob", "Carol", "Lily", "Trevor", "Liam", "Zoe"];
+const occupations = [
+  "Writer",
+  "Teacher",
+  "Programmer",
+  "Artist",
+  "Nail Tech",
+  "Renovator",
+];
 
-// ***************JS SQUARE********************
-
-  const squareDisplay = document.createElement('div');
-  squareDisplay.classList.add('squareDisplay');
-  const body = document.querySelector('body');
-  body.appendChild(squareDisplay);
-
-    // array of freelancers
-  const freelancers = [
-    { name: "Alice", price: 30, occupation: "writer" },
-    { name: "Bob", price: 50, occupation: "teacher" },
-    { name: "Carol", price: 70, occupation: "programmer" },
-    { name: "Sarah", price: 85, occupation: "technician" },
-    { name: "Don", price: 100, occupation: "mechanic" },
-    { name: "Spark", price: 120, occupation: "adv mechanic" },
-    { name: "Lily", price: 140, occupation: "software dev" },
-    { name: "Anya", price: 150, occupation: "grad professor" },
-  ];
-
-  const title = document.createElement("h1");
-    title.textContent = "Freelancer Forum";
-      body.append(title);
-
-  const titleTwo = document.createElement("h2");
-    titleTwo.textContent = "The average starting price is $30";
-      body.append(titleTwo);
-
-  const aF = document.createElement("h3");
-    aF.textContent = "Available Freelancers"
-      body.append(aF);
-
-  const mainText = document.createElement("div")
-    mainText.textContent = "Name Occupation Starting-Price"
-      body.append(mainText);
-
-  setInterval(() => {
-      console.log('Tick')
-      }, 1000)
-    
+const freelancers = [
+  { name: "Alice", price: 30, occupation: "Writer" },
+  { name: "Bob", price: 50, occupation: "Teacher" },
+  { name: "Carol", price: 70, occupation: "Programmer" },
+];
+const maxLength = 15;
 
 
-  // initial array of freelancers
+const addFreelancerIntervalId = setInterval(addFreelancer, 1000);
 
 
+render();
 
 
-// freelancers display
+function render() {
+ 
+  const averagePrice = document.querySelector("#average-price");
+  const tableBody = document.querySelector("#table-body");
 
+  // Create an array of row elements from the freelancers array
+  const rowElements = freelancers.map((freelancer) => {
+    // Create a new row for each freelancer
+    const newRow = document.createElement("tr");
+  
+    const { name, price, occupation } = freelancer;
+    // Create "td" elements for each detail & add the text
+    const nameDetail = document.createElement("td");
+    nameDetail.innerText = name;
 
-// call function to render initial fl data
+    const occupationDetail = document.createElement("td");
+    occupationDetail.innerText = occupation;
 
+    const priceDetail = document.createElement("td");
+    priceDetail.innerText = `$${price}`;
 
-// function to generate new fl data
-    // called in an interval
+    // Append all the "td" elements to the row
+    newRow.append(nameDetail, occupationDetail, priceDetail);
+    // Return the newly created row & its child elements
+    return newRow;
+  });
 
+  // Add the freelancer rows to the table body
+  tableBody.replaceChildren(...rowElements);
 
-// function to calculate avg start price
-    // called in interval
+  // The DOM is updated to reflect the average starting price.
+  const newAverage = calculateAveragePrice();
+  averagePrice.innerText = `$${newAverage}`;
+}
 
+/* Calculate average price */
 
+function calculateAveragePrice() {
+  const total = freelancers.reduce(
+    (subtotal, current) => subtotal + current.price,
+    0
+  );
+ 
+  return Math.round(total / freelancers.length);
+}
+
+/* Add a random freelancer */
+
+function addFreelancer() {
+  const name = names[Math.floor(Math.random() * names.length)];
+  const occupation =
+    occupations[Math.floor(Math.random() * occupations.length)];
+  const price = Math.floor(Math.random() * 100);
+  // Create new freelancer object and push into the freelancers array
+  freelancers.push({ name, price, occupation });
+
+  // Call render() to update the DOM with the newly added freelancer
+  render();
+
+  // Clear setInterval when freelancers length is equal to max length
+  if (freelancers.length === maxLength) {
+    clearInterval(addFreelancerIntervalId);
+  }
+}

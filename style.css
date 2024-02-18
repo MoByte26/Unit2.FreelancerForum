@@ -1,31 +1,16 @@
-/* .catchAll { */
-    .squareDisplay {
-    width: 1000px;
-    height: 900px;
-    border: 10px;
-    border-style: solid; color: black;
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: xx-large;
+  }
+  
+  table {
+    width: 50%;
+  }
+  
+  td {
     text-align: center;
-    
-    }
-/* ********************************************************* */
-    h1 { 
-   font-size: 3em;
-   font-style: italic;
-    }
-/* ********************************************************* */
-    h2 {
-    font-size: 2em;
-    }
-/* ********************************************************* */
-
-    h3 {
-   font-size: 3em;
-    }
-/* ********************************************************* */
-
-    div {
-    display: flex; 
-    word-spacing: 130px;
-    font-size: 2em;
-    }  
-/* } */
+  }
